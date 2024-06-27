@@ -1,0 +1,230 @@
+
+mat-card {
+  width: 500px;
+  background-color: #F2F2F2;
+  height: 280px;
+  border-style: inset;
+  border-color: #0808085e;
+  border-width: 0px 2px 2px 0px;
+  box-shadow: 8px 8px 8px -7px #0808085e;
+  display: grid;
+  grid-template-rows: 80px 100px 100px;
+  z-index: 1; /* Ensure card is above the floating image */
+}
+
+mat-card-actions {
+  display: grid;
+  grid-template-rows: 100px 60px;
+  margin: 15px;
+}
+
+mat-card-header {
+  display: flex;
+  justify-content: center;
+  border: #E3EBF6;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+}
+
+mat-card-subtitle {
+  display: flex;
+  align-items: baseline;
+}
+
+h3 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+#matbtn1, #matbtn2 {
+  height: 40px;
+  border-radius: 5px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 90%;
+  border-style: none;
+}
+
+#matbtn1 {
+  margin-top: 10px;
+  background-color: #065AA6;
+  width: 100%;
+  margin-bottom: 15px;
+  transition: ease 200ms;
+}
+
+#matbtn1:hover {
+  background-color: #E51F33;
+}
+
+#matbtn2 {
+  background-color: #343434;
+  transition: ease 200ms;
+}
+
+#matbtn2:hover {
+  background-color: #E51F33;
+}
+
+#grouped {
+  width: 100%;
+  border: #E3EBF6;
+  border-width: 0px 0px 1px 0px;
+  border-style: solid;
+}
+
+#card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 150px;
+}
+
+/* Falling image animations */
+@keyframes fall {
+  0% {
+      opacity: 0;
+  }
+  50% {
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(100vh);
+      opacity: 0;
+  }
+}
+
+.falling-image {
+  position: absolute;
+  width: 100px;
+  height: auto;
+  opacity: 0;
+  animation: fall 10s linear infinite;
+  z-index: 0; /* Ensure the image is behind other content */
+}
+
+.falling-image:nth-child(2) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.falling-image:nth-child(3) {
+  left: 30%;
+  animation-delay: 2s;
+}
+
+.falling-image:nth-child(4) {
+  left: 50%;
+  animation-delay: 4s;
+}
+
+.falling-image:nth-child(5) {
+  left: 70%;
+  animation-delay: 6s;
+}
+
+.falling-image:nth-child(6) {
+  left: 90%;
+  animation-delay: 8s;
+}
+
+.falling-image:nth-child(7) {
+  left: 5%;
+  animation-delay: 1s;
+}
+
+.falling-image:nth-child(8) {
+  left: 25%;
+  animation-delay: 3s;
+}
+
+.falling-image:nth-child(9) {
+  left: 45%;
+  animation-delay: 5s;
+}
+
+.falling-image:nth-child(10) {
+  left: 65%;
+  animation-delay: 7s;
+}
+
+.falling-image:nth-child(11) {
+  left: 85%;
+  animation-delay: 9s;
+}
+
+/* Rules section styles */
+#rules {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+  padding: 20px;
+}
+
+#rules-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+
+#rules-header h4 {
+  margin: 0;
+}
+
+#rules-header button {
+  background-color: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+#rules-content {
+  margin-top: 10px;
+}
+
+#rules-content p {
+  margin: 0;
+}
+
+#rules-content ul {
+  margin: 10px 0 0;
+  padding-left: 20px;
+}
+
+#rules-content li {
+  margin-bottom: 5px;
+}
+
+.action-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.card {
+  flex: 1;
+  min-width: 150px;
+  text-align: center;
+}
+
+.card img {
+  width: 100px;
+  height: auto;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.card p {
+  margin: 0;
+}

@@ -1,0 +1,71 @@
+<section id="card">
+  <mat-card appearance="outlined">
+    <mat-card-header>
+      <h3>UNO</h3>
+    </mat-card-header>
+    <section id="actions">
+      <mat-card-actions>
+        <div id="grouped">
+          <mat-card-subtitle>Create a New Game</mat-card-subtitle>
+          <button id="matbtn1" mat-raised-button routerLink="/uno/lobby">Create</button>
+        </div>
+        <button id="matbtn2" mat-raised-button (click)="toggleRules()">How to Play</button>
+      </mat-card-actions>
+    </section>
+  </mat-card>
+  <!-- Falling images -->
+  <img src="assets/card_b0.png" alt="Falling Image 1" class="falling-image">
+  <img src="assets/card_gd2c.png" alt="Falling Image 3" class="falling-image">
+  <img src="assets/card_gr.png" alt="Falling Image 4" class="falling-image">
+  <img src="assets/card_rs.png" alt="Falling Image 5" class="falling-image">
+  <img src="assets/card_y5.png" alt="Falling Image 6" class="falling-image">
+  <img src="assets/card_w.png" alt="Falling Image 7" class="falling-image">
+  <img src="assets/card_yr.png" alt="Falling Image 8" class="falling-image">
+  <img src="assets/card_r7.png" alt="Falling Image 9" class="falling-image">
+  <img src="assets/card_b7.png" alt="Falling Image 10" class="falling-image">
+  <img src="assets/card_w4.png" alt="Falling Image 11" class="falling-image">
+
+  <!-- Rules section -->
+  <div *ngIf="showRules" id="rules">
+    <div id="rules-header">
+      <h4>How to Play UNO</h4>
+      <button (click)="toggleRules()">X</button>
+    </div>
+    <div id="rules-content">
+      <p>UNO is a card game that involves players matching colors and numbers.</p>
+      <ul>
+        <li>Each player is dealt 7 cards at the start.</li>
+        <li>Players take turns drawing cards and matching the discard pile.</li>
+        <li>Special cards can change the game direction or force players to draw cards.</li>
+        <li>The first player to get rid of all their cards wins the round.</li>
+      </ul>
+      <h5>Action Cards</h5>
+      <div class="action-cards">
+        <div class="card">
+          <img src="assets/card_bd2c.png" alt="Draw 2 Cards">
+          <p>Draw 2 Cards: The next player must draw 2 cards and lose their turn.</p>
+        </div>
+        <div class="card">
+          <img src="assets/card_gr.png" alt="Reverse">
+          <p>Reverse: Reverses the direction of play.</p>
+        </div>
+        <div class="card">
+          <img src="assets/card_rs.png" alt="Skip">
+          <p>Skip: The next player is skipped.</p>
+        </div>
+        <div class="card">
+          <img src="assets/card_w.png" alt="Wild">
+          <p>Wild: Allows the player to choose the color to be played next.</p>
+        </div>
+        <div class="card">
+          <img src="assets/card_w4.png" alt="Wild Draw 4">
+          <p>Wild Draw 4: The next player must draw 4 cards and lose their turn. The player also chooses the color to be played next.</p>
+        </div>
+        <div class="card">
+          <img src="assets/card_back.png" alt="Draw Card">
+          <p>You can draw a card using this card. When you have a single card left, press this card popping up next to your card to win.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

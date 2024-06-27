@@ -1,0 +1,223 @@
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  padding: 20px 0; 
+  background-color: #2b5329; /* Dark green background color */
+}
+
+.controls {
+  margin-bottom: 20px;
+}
+
+.player-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 200px; /* Adjust this value to move the player-info section down */
+  margin-bottom: 20px;
+}
+
+.player-info {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center vertically */
+  margin-bottom: 20px;
+}
+
+.player-info h3 {
+  margin: 0 10px;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.current-turn {
+  color: red; /* Highlight current player */
+}
+
+.card-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.card-row.top {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  right: 0;
+}
+
+.card-row.bottom {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+}
+
+.card-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.card-column.left {
+  left: 10px;
+}
+
+.card-column.right {
+  right: 10px;
+}
+
+.card {
+  position: relative;
+}
+
+.card img {
+  width: 100px;
+  height: auto;
+  z-index: 1;
+  transition: transform 0.3s;
+}
+
+.card img:hover {
+  z-index: 10; /* Bring the card to the front on hover */
+  transform: scale(1.3);
+}
+
+/* Adjust the hover effect for rotated cards */
+.card-column.rotated .card img:hover {
+  z-index: 10; /* Bring the card to the front on hover */
+  transform: rotate(90deg) scale(1.3);
+}
+
+/* Add styles for the selected card in the center */
+.selected-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+}
+
+.selected-card img {
+  width: 250px; /* Increase size for better visibility */
+  height: auto;
+}
+
+/* Add styles for the discard pile managed by the 'Admin Player' */
+.center-discard-pile {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.center-discard-pile .card {
+  margin: 0 10px;
+}
+
+.center-discard-pile .card img {
+  width: 100px;
+  height: auto;
+  margin: 0; /* No margins needed for single card */
+}
+
+/* Add styles for player labels */
+.player-label {
+  font-weight: bold;
+  margin-bottom: 200px;
+}
+
+.player-label.rotated {
+  transform: rotate(-90deg);
+  margin-bottom: 0;
+  margin-right: 200px;
+}
+
+.win-dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.win-message {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.uno-card {
+  width: 100px;
+  height: auto;
+  cursor: pointer;
+  margin-left: 20px; 
+}
+
+.card-row .uno-card {
+  margin-left: 20px;
+}
+
+.card-column .uno-card {
+  margin-top: 20px;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cards-container .card {
+  margin-left: -30px; /* Overlap the cards */
+}
+
+.card-column .cards-container {
+  flex-direction: column;
+}
+
+.card-column .cards-container .card {
+  margin-top: -40px; /* Overlap the cards vertically */
+}
+
+.card-column.rotated .cards-container .card {
+  margin-top: -120px; /* Overlap the cards vertically */
+}
+
+.card-column.rotated .cards-container .card img {
+  transform: rotate(90deg);
+  margin-top: 10px;
+}
+
+.card-column.rotated .cards-container .card img:hover {
+  transform: rotate(90deg) scale(1.2);
+}

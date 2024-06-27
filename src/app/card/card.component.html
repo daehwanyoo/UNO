@@ -1,0 +1,68 @@
+<div class="container">
+  <div class="player-info-container">
+    <div class="player-info">
+      <h3 [class.current-turn]="players[0].isTurn">{{players[0].name}}</h3>
+      <h3 [class.current-turn]="players[1].isTurn">{{players[1].name}}</h3>
+      <h3 [class.current-turn]="players[2].isTurn">{{players[2].name}}</h3>
+      <h3 [class.current-turn]="players[3].isTurn">{{players[3].name}}</h3>
+    </div>
+  </div>
+  <div class="card-row top">
+    <div class="player-label">Player 1</div>
+    <div class="cards-container">
+      <div class="card" *ngFor="let card of players[0].cards">
+        <img [src]="card" alt="Card image" (click)="players[0].isTurn && selectCard(card)">
+      </div>
+      <img *ngIf="players[0].needsToClickUno && !players[0].hasClickedUno" class="uno-card" [src]="cardBackImage" alt="UNO card back" (click)="confirmUno(players[0])">
+    </div>
+  </div>
+  <div class="card-column left rotated">
+    <div class="player-label rotated">Player 2</div>
+    <div class="cards-container">
+      <div class="card" *ngFor="let card of players[1].cards">
+        <img [src]="card" alt="Card image" (click)="players[1].isTurn && selectCard(card)">
+      </div>
+      <img *ngIf="players[1].needsToClickUno && !players[1].hasClickedUno" class="uno-card" [src]="cardBackImage" alt="UNO card back" (click)="confirmUno(players[1])">
+    </div>
+  </div>
+  <div class="card-column right rotated">
+    <div class="player-label rotated">Player 3</div>
+    <div class="cards-container">
+      <div class="card" *ngFor="let card of players[2].cards">
+        <img [src]="card" alt="Card image" (click)="players[2].isTurn && selectCard(card)">
+      </div>
+      <img *ngIf="players[2].needsToClickUno && !players[2].hasClickedUno" class="uno-card" [src]="cardBackImage" alt="UNO card back" (click)="confirmUno(players[2])">
+    </div>
+  </div>
+  <div class="card-row bottom">
+    <div class="player-label">Player 4</div>
+    <div class="cards-container">
+      <div class="card" *ngFor="let card of players[3].cards">
+        <img [src]="card" alt="Card image" (click)="players[3].isTurn && selectCard(card)">
+      </div>
+      <img *ngIf="players[3].needsToClickUno && !players[3].hasClickedUno" class="uno-card" [src]="cardBackImage" alt="UNO card back" (click)="confirmUno(players[3])">
+    </div>
+  </div>
+  <!-- Add this div to show the selected card in the center -->
+  <div class="selected-card" *ngIf="selectedCard">
+    <img [src]="selectedCard" alt="Selected card">
+  </div>
+  <!-- Show the last card in the discard pile managed by the 'Admin Player' and the card back image in the center -->
+  <div class="center-discard-pile">
+    <div class="card">
+      <img [src]="adminPlayer.cards[adminPlayer.cards.length - 1]" alt="Card image">
+    </div>
+    <div class="card">
+      <img [src]="cardBackImage" alt="Card Back" (click)="drawCard(players[currentPlayerIndex])">
+    </div>
+  </div>
+  <!-- Add the color selection dialog -->
+  <app-color-selection-dialog *ngIf="showColorDialog" (colorSelected)="chooseColor($event)"></app-color-selection-dialog>
+  <!-- Winning screen dialog -->
+  <div class="win-dialog" *ngIf="showWinDialog">
+    <div class="win-message">
+      <h2>{{winnerName}} WINS!</h2>
+      <button (click)="resetGame()">Restart Game</button>
+    </div>
+  </div>
+</div>
