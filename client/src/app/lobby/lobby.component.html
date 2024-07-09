@@ -1,1 +1,28 @@
-<app-card></app-card>
+<!-- src/app/lobby/lobby.component.html -->
+<div class="view-container">
+    <h1 class="game-header">UNO</h1>
+    <div [style.margin]="'auto'" class="card gt-card">
+      <div class="card-body">
+        <h2 class="section-header">
+          Lobby ({{ players.length }} Player{{ players.length === 1 ? '' : 's' }})
+        </h2>
+        <hr>
+        <div class="lobby-players">
+          <div *ngFor="let player of players">
+            <span>{{ player.displayName }}</span>
+            <span *ngIf="partyLeader?.playerId === player.playerId"> (Leader)</span>
+            <span>{{ player.isReady ? 'Ready' : 'Not Ready' }}</span>
+          </div>
+        </div>
+        <hr>
+        <button [disabled]="buttonActivated" class="btn gt-btn-red menu-button" [style.margin-bottom]="'8px'" (click)="toggleReady()">
+          {{ buttonActivated ? 'Waiting for All Ready' : 'I\'m Ready!'}}
+        </button>
+        <div class="game-code">
+          <span>{{ deepLinkUrl }}</span>
+          <button (click)="copyGameCode()">Copy Join Link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

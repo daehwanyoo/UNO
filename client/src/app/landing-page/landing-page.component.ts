@@ -1,4 +1,5 @@
-import { Component, ElementRef, AfterViewInit } from '@angular/core';
+// src/app/landing-page/landing-page.component.ts
+import { Component, ElementRef, AfterViewInit, OnInit, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -12,10 +13,17 @@ import { SocketService } from '../services/socket.service';
   standalone: true,
   imports: [MatCardModule, MatButtonModule, CommonModule, RouterModule],
 })
-export class LandingPageComponent implements AfterViewInit {
+export class LandingPageComponent implements AfterViewInit, OnInit {
   showRules = false;
 
-  constructor(private elRef: ElementRef) {}
+  constructor(private elRef: ElementRef, private socketService: SocketService) {}
+
+  ngOnInit() {
+    // Listen for a test response from the server
+    this.socketService.on('example-event-response', (data: any) => {
+      console.log('Received example-event-response:', data);
+    });
+  }
 
   ngAfterViewInit() {
     const images = this.elRef.nativeElement.querySelectorAll('.falling-image');

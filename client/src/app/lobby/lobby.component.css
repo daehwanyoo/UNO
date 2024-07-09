@@ -1,0 +1,69 @@
+/* src/app/lobby/lobby.component.css */
+.view-container {
+    text-align: center;
+    margin: 20px;
+  }
+  
+  .game-header {
+    font-size: 3em;
+    color: #333;
+  }
+  
+  .gt-card {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .card-body {
+    padding: 20px;
+  }
+  
+  .section-header {
+    font-size: 1.5em;
+    color: #555;
+  }
+  
+  .lobby-players {
+    margin: 20px 0;
+  }
+  
+  .menu-button {
+    width: 100%;
+    padding: 10px;
+    font-size: 1em;
+  }
+  
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    background-color: #555;
+    border: none;
+    border-radius: 15px;
+  }
+  
+  .btn:hover {
+    background-color: #777;
+  }
+  
+  .btn:active {
+    background-color: #333;
+  }
+  
+  .gt-btn-red {
+    background-color: #d9534f;
+  }
+  
+  .gt-btn-red:hover {
+    background-color: #c9302c;
+  }
+  
+  .gt-btn-red:active {
+    background-color: #ac2925;
+  }
+  
