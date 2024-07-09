@@ -10,13 +10,25 @@
           <div *ngFor="let player of players">
             <span>{{ player.displayName }}</span>
             <span *ngIf="partyLeader?.playerId === player.playerId"> (Leader)</span>
+            <span *ngIf="currentPlayer?.playerId === player.playerId"> (You)</span>
             <span>{{ player.isReady ? 'Ready' : 'Not Ready' }}</span>
           </div>
         </div>
         <hr>
-        <button [disabled]="buttonActivated" class="btn gt-btn-red menu-button" [style.margin-bottom]="'8px'" (click)="toggleReady()">
-          {{ buttonActivated ? 'Waiting for All Ready' : 'I\'m Ready!'}}
-        </button>
+        <div *ngIf="currentPlayer?.displayName === 'Player 1'">
+          <button [disabled]="!buttonActivated" class="btn gt-btn-red menu-button" (click)="startGame()">
+            Start Game
+          </button>
+        </div>
+        <div *ngIf="currentPlayer?.displayName !== 'Player 1'">
+          <button class="btn gt-btn-red menu-button" (click)="toggleReady()">
+            I'm Ready!
+          </button>
+        </div>
+        <div>
+          <p>Current Player: {{ currentPlayer?.displayName }}</p>
+          <p>Party Leader: {{ partyLeader?.displayName }}</p>
+        </div>
       </div>
     </div>
   </div>

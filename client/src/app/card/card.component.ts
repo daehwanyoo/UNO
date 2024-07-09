@@ -103,7 +103,6 @@ export class CardComponent implements OnInit {
     }
   }
 
-
   logCardDetails() {
     this.players.forEach(player => {
       console.log(`${player.name}: ${player.cards.join(', ')}`);
@@ -112,7 +111,6 @@ export class CardComponent implements OnInit {
     const remainingCards = this.cardImages.filter(card => !this.selectedCards.includes(card));
     console.log(`Remaining cards: ${remainingCards.join(', ')}`);
   }
-
 
   selectCard(card: string) {
     const currentPlayer = this.players[this.currentPlayerIndex];
@@ -210,12 +208,11 @@ export class CardComponent implements OnInit {
     this.initializeGame();
   }
 
-
   isValidPlay(card: string, topCard: string): boolean {
     const cardDetails = parseCardFilename(card);
     const topCardDetails = parseCardFilename(topCard);
 
-    console.log(`Checking if card ${card} (Color: ${cardDetails.color}, Value: ${cardDetails.value}) is valid on top card ${topCard} (Color: ${topCardDetails.color}, Value: ${topCardDetails.value})`);
+    console.log(`Checking if card ${card} (Color: ${cardDetails.color}, Value: ${cardDetails.value}) is valid on top card ${topCard} (Color: ${topCardDetails.color}, Value: ${topCardDetails.color})`);
 
     // Check if the card matches the top card's color, value, or is a wild card
     const isValid = (
@@ -228,7 +225,6 @@ export class CardComponent implements OnInit {
     console.log(`Is valid play: ${isValid}`);
     return isValid;
   }
-
 
   skipNextPlayer() {
     // Reset the isTurn flag for the current player
@@ -296,7 +292,6 @@ export class CardComponent implements OnInit {
   isSpecialCard(card: string): boolean {
     return ['skip', 'reverse', 'draw two', 'wild', 'wilddraw4'].includes(parseCardFilename(card).value);
   }
-
 
   replenishDrawPile() {
     if (this.discardPile.length > 1) {
