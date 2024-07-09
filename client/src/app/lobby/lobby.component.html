@@ -1,4 +1,3 @@
-<!-- src/app/lobby/lobby.component.html -->
 <div class="view-container">
     <h1 class="game-header">UNO</h1>
     <div [style.margin]="'auto'" class="card gt-card">
@@ -18,10 +17,6 @@
         <button [disabled]="buttonActivated" class="btn gt-btn-red menu-button" [style.margin-bottom]="'8px'" (click)="toggleReady()">
           {{ buttonActivated ? 'Waiting for All Ready' : 'I\'m Ready!'}}
         </button>
-        <div class="game-code">
-          <span>{{ deepLinkUrl }}</span>
-          <button (click)="copyGameCode()">Copy Join Link</button>
-        </div>
       </div>
     </div>
   </div>
