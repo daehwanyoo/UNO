@@ -7,13 +7,13 @@
       <mat-card-actions>
         <div id="grouped">
           <mat-card-subtitle>Create a New Game</mat-card-subtitle>
-          <button id="matbtn1" mat-raised-button routerLink="/uno/lobby">Create</button>
+          <button id="matbtn1" mat-raised-button (click)="createGame()">Create</button>
         </div>
         <button id="matbtn2" mat-raised-button (click)="toggleRules()">How to Play</button>
       </mat-card-actions>
     </section>
   </mat-card>
-  <!-- Falling images -->
+<!-- Falling images -->
   <img src="assets/card_b0.png" alt="Falling Image 1" class="falling-image">
   <img src="assets/card_gd2c.png" alt="Falling Image 3" class="falling-image">
   <img src="assets/card_gr.png" alt="Falling Image 4" class="falling-image">

@@ -15,12 +15,12 @@
           </div>
         </div>
         <hr>
-        <div *ngIf="currentPlayer?.displayName === 'Player 1'">
+        <div *ngIf="partyLeader?.playerId === currentPlayer?.playerId">
           <button [disabled]="!buttonActivated" class="btn gt-btn-red menu-button" (click)="startGame()">
-            Start Game
+            Start Game!
           </button>
         </div>
-        <div *ngIf="currentPlayer?.displayName !== 'Player 1'">
+        <div *ngIf="partyLeader?.playerId !== currentPlayer?.playerId">
           <button class="btn gt-btn-red menu-button" (click)="toggleReady()">
             I'm Ready!
           </button>

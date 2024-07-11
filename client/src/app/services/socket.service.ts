@@ -1,4 +1,3 @@
-// src/app/services/socket.service.ts
 import { Injectable } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 
@@ -10,6 +9,14 @@ export class SocketService {
 
   constructor() {
     this.socket = io('http://localhost:3000');  // Initialize the socket connection
+
+    this.socket.on('connect', () => {
+      console.log('Socket connected with ID:', this.socket.id);
+    });
+
+    this.socket.on('disconnect', () => {
+      console.log('Socket disconnected');
+    });
   }
 
   on(event: string, callback: (...args: any[]) => void) {
@@ -32,10 +39,12 @@ export class SocketService {
   }
 
   createGame(displayName: string) {
+    console.log('Creating game with display name:', displayName);
     this.emit('createGame', { displayName });
   }
 
-  joinGame(roomCode: string, displayName: string) {
-    this.emit('joinGame', { roomCode, displayName });
+  joinLobby(displayName: string) {
+    console.log('Joining lobby with display name:', displayName);
+    this.emit('joinLobby', { displayName });
   }
 }
