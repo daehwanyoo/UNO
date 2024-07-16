@@ -22,6 +22,7 @@ export class LobbyComponent implements OnInit, OnDestroy {
   public buttonActivated: boolean = false;
   public deepLinkUrl: string;
   public buttonActivated$ = new BehaviorSubject<boolean>(false);
+  public errorMessage: string | null = null;
 
   constructor(
     private _socket: SocketService,
@@ -58,7 +59,7 @@ export class LobbyComponent implements OnInit, OnDestroy {
     this.players = players;
     this.partyLeader = players[0] || null;
     this.currentPlayer = players.find(player => player.playerId === this.socketId) || null;
-    this.buttonActivated = players.every(player => player.isReady);
+    this.buttonActivated = players.every(player => player.isReady) && !this.partyLeader?.isReady;
     console.log('Players updated:', players);
     console.log('Party Leader:', this.partyLeader);
     console.log('Current Player:', this.currentPlayer);
@@ -74,6 +75,7 @@ export class LobbyComponent implements OnInit, OnDestroy {
 
     this._socket.on('allReady', () => {
       this.buttonActivated = true;
+      console.log('All players are ready');
     });
 
     this._socket.on('gameStarted', () => {
@@ -94,12 +96,19 @@ export class LobbyComponent implements OnInit, OnDestroy {
   }
 
   public toggleReady() {
+    console.log('Toggling ready status');
     this._socket.emit('readyUp');
   }
 
   public startGame() {
+    console.log('Start game button clicked');
     if (this.partyLeader?.playerId === this.currentPlayer?.playerId && this.buttonActivated) {
+      console.log('Starting game...');
       this._socket.emit('startGame');
+    } else {
+      console.log('Cannot start game: Not all players are ready or you are not the leader');
+      this.errorMessage = 'Every player has to press ready';
+      console.log('Error message set:', this.errorMessage);
     }
   }
 

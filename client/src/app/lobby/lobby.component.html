@@ -25,6 +25,9 @@
             I'm Ready!
           </button>
         </div>
+        <div *ngIf="errorMessage" class="error-message">
+          {{ errorMessage }}
+        </div>
         <div>
           <p>Current Player: {{ currentPlayer?.displayName }}</p>
           <p>Party Leader: {{ partyLeader?.displayName }}</p>

@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
       if (player) {
         player.isReady = !player.isReady;
         io.to(roomCode).emit('updatePlayers', room.players);
-        if (room.players.every(p => p.isReady)) {
+        if (room.players.every(p => p.isReady) && room.players.length > 1) {
           io.to(roomCode).emit('allReady');
         }
       }
@@ -88,8 +88,13 @@ io.on('connection', (socket) => {
     const roomCode = 'lobby';
     const room = rooms[roomCode];
     const leader = room.players[0]; // The first player is the leader
-    if (leader.playerId === socket.id && room.players.every(p => p.isReady)) {
+    console.log('startGame event received from:', socket.id);
+    console.log('Room players:', room.players);
+    if (leader.playerId === socket.id && room.players.every(p => p.isReady && p.playerId !== leader.playerId)) {
       io.to(roomCode).emit('gameStarted');
+      console.log('Game started event emitted');
+    } else {
+      console.log('Cannot start game: Not all players are ready or not the leader');
     }
   });
 
